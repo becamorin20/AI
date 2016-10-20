@@ -6,13 +6,13 @@
 
 
 // A new AIShell will be created for every move request.
-class AIShell{
+class AIShell {
 
 public:
 	//these represent the values for each piece type.
-	static const int AI_PIECE=1;
+	static const int AI_PIECE = 1;
 	static const int HUMAN_PIECE = -1;
-	static const int NO_PIECE=0;
+	static const int NO_PIECE = 0;
 
 
 private:
@@ -25,6 +25,7 @@ private:
 	Move lastMove; //this is the move made last by your opponent. If your opponent has not made a move yet (you move first) then this move will hold the value (-1, -1) instead.
 
 
+
 public:
 	int deadline; //this is how many milliseconds the AI has to make move.
 	int k;        // k is the number of pieces a player must get in a row/column/diagonal to win the game. IE in connect 4, this variable would be 4
@@ -32,6 +33,13 @@ public:
 	AIShell(int numCols, int numRows, bool gravityOn, int** gameState, Move lastMove);
 	~AIShell();
 	Move makeMove();
+	Move MiniMax(int maximaizing_player);
+	int Max(int maxplayer);
+	int Min(int minplayer);
+	bool BoardFull();
+	Move Winner();
+	int Heuristic();
+
 };
 
 #endif //AISHELL_H
